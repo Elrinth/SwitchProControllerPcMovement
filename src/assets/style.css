@@ -1,0 +1,115 @@
+body {
+    background:none;
+}
+.inputs .btn {
+    display:none;
+}
+.inputs .btn.pressed {
+    display:block;
+}
+.btn {
+    position:absolute;
+    display:block;
+    width:66px;
+    height:66px;
+    background-color:rgba(255,0,0,0.4);
+    border-radius: 46px;
+    top:0;
+    left:0;
+    content: ' ';
+}
+.analog {
+    position: absolute;
+    display: block;
+    top: 135px;
+    left: 147px;
+    width:103px;
+    height:103px;
+    background-image: url('analog_stick.png');
+}
+.analog.pressed {
+    background-image: url('analog_stick_red.png');
+}
+.analog.right-stick {
+    top: 257px;
+    left: 507px;
+}
+.btn.L,
+.btn.R {
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    border-radius: none;
+}
+.btn.ZL {
+    left: 32px;
+}
+.btn.ZR {
+    left: 780px;
+}
+.btn.ZL span,.btn.ZR span {
+    padding: 18px;
+    display:block;
+    font-size:24px;
+    color:#fff;
+}
+.btn.squareish {
+    border-radius: 4px;
+    width: 42px;
+    height: 42px;
+}
+.btn.small {
+    width: 38px;
+    height: 38px;
+}
+.btn.minus {
+    left: 314px;
+    top: 102px;
+}
+.btn.plus {
+    left: 533px;
+    top: 102px;
+}
+.btn.home {
+    left: 487px;
+    top: 167px;
+}
+.btn.screenshot {
+    width: 34px;
+    height: 34px;
+    left: 363px;
+    top: 170px;
+}
+.btn.X {
+    left: 643px;
+    top: 93px;
+}
+.btn.A {
+    left: 711px;
+    top: 154px;
+}
+.btn.Y {
+    left: 574px;
+    top: 154px;
+}
+.btn.B {
+    left: 643px;
+    top: 213px;
+}
+
+.DPAD-L {
+    left: 240px;
+    top: 287px;
+}
+.DPAD-R {
+    left: 330px;
+    top: 287px;
+}
+.DPAD-U {
+    left: 285px;
+    top: 243px;
+}
+.DPAD-D {
+    left: 285px;
+    top: 332px;
+}
