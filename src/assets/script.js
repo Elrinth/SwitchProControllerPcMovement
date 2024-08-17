@@ -51,6 +51,7 @@ window.addEventListener("gamepadconnected", (e) => {
     gp.axes.length,
   );
   });
+  var gpOfInterest = null;
 
   function gameLoop() {
     const gamepads = navigator.getGamepads();
@@ -58,53 +59,44 @@ window.addEventListener("gamepadconnected", (e) => {
       return;
     }
   
-    const gp = gamepads[3];
-    if (gp) {
-        //console.log("we got a gamepad");
-        var cnt = 0;
-        var theElement = document.getElementsByClassName("A");
-        //console.log("we got an element", theElement.length);
-        
-        var btnCnt = 0;
-        gp.buttons.forEach(but => {
-            var element = document.getElementsByClassName("btn-" + btnCnt)[0];
-            if (element) {
-                if (but.pressed) {
-                    //console.log("press", btnCnt);
-                    element.classList.add("pressed");
+    var gpCnt = 0;
+    gamepads.forEach(gp => {
+      if (gp) {
+        if (gpOfInterest == null || gpOfInterest == gpCnt) {
+            //console.log("we got a gamepad");
+            var cnt = 0;
+            var theElement = document.getElementsByClassName("A");
+            //console.log("we got an element", theElement.length);
+            
+            var btnCnt = 0;
+            gp.buttons.forEach(but => {
+                var element = document.getElementsByClassName("btn-" + btnCnt)[0];
+                if (element) {
+                    if (but.pressed) {
+                        if (gpOfInterest == null)
+                          gpOfInterest = gpCnt;
+                        element.classList.add("pressed");
+                    }
+                    else   
+                        element.classList.remove("pressed");
                 }
-                else   
-                    element.classList.remove("pressed");
-            }
-            btnCnt++;
-        });
-        var axCnt = 0;
-        // left thumb
-        // -1 to 1
-        var leftThumb = document.getElementsByClassName("left-stick")[0];
-        leftThumb.style.left = (147 + (gp.axes[0]*30)) + "px";
-        leftThumb.style.top = (135 + (gp.axes[1]*30)) + "px";
+                btnCnt++;
+            });
+            var axCnt = 0;
+            // left thumb
+            // -1 to 1
+            var leftThumb = document.getElementsByClassName("left-stick")[0];
+            leftThumb.style.left = (147 + (gp.axes[0]*30)) + "px";
+            leftThumb.style.top = (135 + (gp.axes[1]*30)) + "px";
 
-        var rightThumb = document.getElementsByClassName("right-stick")[0];
-        rightThumb.style.left = (507 + (gp.axes[2]*30)) + "px";
-        rightThumb.style.top = (257 + (gp.axes[3]*30)) + "px";
-    }/*
-    if (gp.buttons[0].pressed) {
-      b--;
-      console.log("button pressed!");
-    }
-    if (gp.buttons[2].pressed) {
-      b++;
-    }
-    if (gp.buttons[1].pressed) {
-      a++;
-    }
-    if (gp.buttons[3].pressed) {
-      a--;
-    }*/
-  
-    //ball.style.left = `${a * 2}px`;
-    //ball.style.top = `${b * 2}px`;
+            var rightThumb = document.getElementsByClassName("right-stick")[0];
+            rightThumb.style.left = (507 + (gp.axes[2]*30)) + "px";
+            rightThumb.style.top = (257 + (gp.axes[3]*30)) + "px";
+            gpCnt++;
+        }
+      }
+    });
+    
   
     start = requestAnimationFrame(gameLoop);
   }

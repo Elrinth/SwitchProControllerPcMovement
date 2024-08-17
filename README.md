@@ -6,3 +6,6 @@ Shows your Switch Pro Controller what it's doing...
 I use it to show what I'm pressing on my OBS Stream...
 
 I have it hosted at https://controller.thefirstboss.com
+
+# local dev:
+npm start
